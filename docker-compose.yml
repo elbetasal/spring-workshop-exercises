@@ -1,0 +1,13 @@
+version : '3'
+services:
+  mysql:
+    image: mysql/mysql-server:5.7.21
+    ports:
+    - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: "secret"
+      MYSQL_DATABASE: "feedback"
+      MYSQL_USER: "sqluser"
+      MYSQL_PASSWORD: "sqluserpassword"
+    volumes:
+    - ./sql-init:/docker-entrypoint-initdb.d
