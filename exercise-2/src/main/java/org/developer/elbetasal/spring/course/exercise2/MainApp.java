@@ -1,12 +1,14 @@
 package org.developer.elbetasal.spring.course.exercise2;
 
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
 
+@ComponentScan
 public class MainApp {
 
 	public static void main(String[] args) {
-		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("/beans.xml");
+		ApplicationContext applicationContext = new AnnotationConfigApplicationContext(MainApp.class);
 
 		GreetingService englishGreetingService = applicationContext.getBean("englishGreeting" , GreetingService.class);
 		System.out.println(extractGreetingMessage(englishGreetingService, "FMAT"));
@@ -22,7 +24,7 @@ public class MainApp {
 
 		GreetingService encryptedGreetingService = applicationContext.getBean("encryptedGreeting" , GreetingService.class);
 		System.out.println(encryptedGreetingService.greet("FMAT"));
-		((ClassPathXmlApplicationContext) applicationContext).registerShutdownHook();
+		((AnnotationConfigApplicationContext) applicationContext).registerShutdownHook();
 	}
 
 	private static String extractGreetingMessage(GreetingService greetingService, String name) {
