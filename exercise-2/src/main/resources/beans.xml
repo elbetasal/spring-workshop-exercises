@@ -6,19 +6,6 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
-    <bean name="englishGreeting"
-          scope="prototype"
-          class="org.developer.elbetasal.spring.course.exercise2.EnglishGreetingService"></bean>
-    <bean name="spanishGreeting" class="org.developer.elbetasal.spring.course.exercise2.SpanishGreetingService"></bean>
-    <bean name="frenchGreetingService"
-          class="org.developer.elbetasal.spring.course.exercise2.FrenchGreetingService">
-        <constructor-arg ref="extenalFrenchService"/>
-    </bean>
 
-    <bean name="encryptedGreeting"
-          class="org.developer.elbetasal.spring.course.exercise2.EncryptedGreetingService">
-        <property name="englishGreetingService" ref="englishGreeting"/>
-    </bean>
-    <bean id="extenalFrenchService" class="org.developer.elbetasal.spring.course.exercise2.ExternalFrenchService"/>
-
+    <context:component-scan base-package="org.developer.elbetasal.spring.course.exercise2"/>
 </beans>
