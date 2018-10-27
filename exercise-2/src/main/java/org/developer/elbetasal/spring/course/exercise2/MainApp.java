@@ -1,10 +1,12 @@
 package org.developer.elbetasal.spring.course.exercise2;
 
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.*;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
 @ComponentScan
+@PropertySource("classpath:app.properties")
+@Configuration
 public class MainApp {
 
 	public static void main(String[] args) {
@@ -29,6 +31,13 @@ public class MainApp {
 
 	private static String extractGreetingMessage(GreetingService greetingService, String name) {
 		return String.format("Greet from %s with %s", greetingService, greetingService.greet(name));
+	}
+
+	@Bean
+	public static PropertySourcesPlaceholderConfigurer propertPlaceHolderConfiguer() {
+
+		return new PropertySourcesPlaceholderConfigurer();
+
 	}
 
 }
