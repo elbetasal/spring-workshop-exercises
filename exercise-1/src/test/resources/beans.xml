@@ -6,4 +6,10 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <bean class="org.developer.elbetasal.spring.exercise1.course.CelsiusToFahrenheitConverterService"
+          name="celsius"/>
+    <bean class="org.developer.elbetasal.spring.exercise1.course.FahrenheitToCelsiusConverterService"
+          name="fahrenheit"/>
+
 </beans>
