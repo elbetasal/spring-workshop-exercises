@@ -12,9 +12,10 @@
 	</properties>
 
 	<modules>
-		<module>exercise-1</module>
-		<module>exercise-2</module>
+	<module>exercise-1</module>
+	<module>exercise-2</module>
         <module>exercise-3</module>
+		<module>exercise-4</module>
 	</modules>
 	<dependencyManagement>
 		<dependencies>
