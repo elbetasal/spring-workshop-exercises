@@ -6,7 +6,7 @@ public interface StudentRepository {
 
 	Student create(String name , Integer age);
 
-	Student findStudentById(Integer id);
+	Student findStudentById(Long id);
 
 	List<Student> findAllStudents();
 

@@ -13,6 +13,6 @@ public class Student {
 
 	private Integer age;
 	private String name;
-	private Integer id;
+	private Long id;
 
 }
