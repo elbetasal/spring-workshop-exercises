@@ -1,5 +1,6 @@
 package org.developer.elbetasal.spring.course.exercise3;
 
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -17,7 +18,15 @@ public class StudentRepositoryImpl implements StudentRepository {
 
 	@Override
 	public Student create(String name, Integer age) {
-		return null;
+		this.namedParameterJdbcTemplate.update(
+				"insert into student name , age values(:name , :age)"
+				, new MapSqlParameterSource("name" , name)
+						.addValue("age" , age));
+		return Student
+				.builder()
+				.age(age)
+				.name(name)
+				.build();
 	}
 
 	@Override

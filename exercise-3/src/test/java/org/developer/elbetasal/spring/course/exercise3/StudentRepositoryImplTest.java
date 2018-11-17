@@ -1,6 +1,8 @@
 package org.developer.elbetasal.spring.course.exercise3;
 
+import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -10,23 +12,28 @@ import static org.junit.Assert.*;
 @ContextConfiguration(classes = AppConfig.class)
 public class StudentRepositoryImplTest {
 
-	@org.junit.Test
+	@Autowired
+	private StudentRepository studentRepository;
+
+	@Test
 	public void create() {
+		Student student = this.studentRepository.create("Esau" , 34);
+		
 	}
 
-	@org.junit.Test
+	@Test
 	public void findStudentById() {
 	}
 
-	@org.junit.Test
+	@Test
 	public void findAllStudents() {
 	}
 
-	@org.junit.Test
+	@Test
 	public void delete() {
 	}
 
-	@org.junit.Test
+	@Test
 	public void update() {
 	}
 }
