@@ -2,11 +2,14 @@ package org.fmat.books;
 
 public class Book {
 
-	private final String id;
+	private String id;
 
-	private final String name;
+	private String name;
 
-	private final String isbn;
+	private String isbn;
+
+	public Book() {
+	}
 
 	public Book(String id, String name, String isbn) {
 		this.id = id;
@@ -24,6 +27,18 @@ public class Book {
 
 	public String getIsbn() {
 		return isbn;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
 	}
 
 	@Override
