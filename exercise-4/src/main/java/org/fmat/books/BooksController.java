@@ -5,14 +5,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
-import javax.annotation.PostConstruct;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.util.*;
 
 @Controller
-@RequestMapping("/booksMvc")
+@ControllerAdvice
+@RequestMapping("/books-store")
 public class BooksController {
 
 	private final BookRepository bookRepository;
@@ -21,38 +18,46 @@ public class BooksController {
 		this.bookRepository = bookRepository;
 	}
 
+	@GetMapping("/")
+	public String defaultPage() {
+		return "createBook";
+	}
+
 	@GetMapping("/show")
 	public ModelAndView findBooks() {
-		ModelAndView modelAndView = new ModelAndView("books" ,
+		ModelAndView modelAndView = new ModelAndView("books_list",
 				"books" , bookRepository.findAllBooks());
 		return modelAndView;
 	}
 
+	@GetMapping("/showAddBook")
+	public String showCreateBook(Model model){
+		return "createBook";
+	}
 
-	@GetMapping("/{id}")
+	@GetMapping("/bookDetails/{id}")
 	public ModelAndView findBookById(@PathVariable String id,
 	                                 @RequestParam("q") Optional<String> q){
 		List books = new ArrayList();
 		books.add(bookRepository.findById(id));
-		ModelAndView modelAndView = new ModelAndView("books" ,
+		ModelAndView modelAndView = new ModelAndView("books_list",
 				"books" , books);
 		LoggerFactory.getLogger(getClass()).info("El valor del param es {}"
 				, q.orElse("No llego el parametro"));
 		return modelAndView;
 	}
 
-	@GetMapping("/showAddBook")
-	public String showCreateBook(Model model){
-		Book book = new Book(UUID.randomUUID().toString(),
-												"Name","ISBN");
-		model.addAttribute("book" , book);
-		return "createBook";
-	}
-
-	@PostMapping("/addBook")
+	@PostMapping("/addNewBook")
 	public String addBook(@ModelAttribute Book book ){
 		bookRepository.saveBook(book);
-		return "forward:show";
+		return "redirect:show";
 	}
 
+	@ModelAttribute
+	public void addAt(Model model) {
+		Book book = new Book(UUID.randomUUID().toString(),
+				"Name","ISBN");
+		model.addAttribute("book" , book);
+
+	}
 }

@@ -16,7 +16,7 @@ public class BooksServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 	                     HttpServletResponse response) throws ServletException, IOException {
 		request.setAttribute("books" , bookRepository.findAllBooks());
-		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/books.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/books_list.jsp");
 		dispatcher.forward(request , response);
 	}
 
