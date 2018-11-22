@@ -10,7 +10,7 @@ public interface StudentRepository {
 
 	List<Student> findAllStudents();
 
-	void delete(Integer id);
+	void delete(Long id);
 
-	void update(Integer id);
+	void update(Long id, Student student);
 }
