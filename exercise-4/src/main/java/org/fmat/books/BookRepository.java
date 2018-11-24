@@ -29,6 +29,8 @@ public class BookRepository {
 				book.getName() , book.getIsbn());
 		savedBook.setPhone(book.getPhone());
 		savedBook.setAuthorEmail(book.getAuthorEmail());
+		savedBook.setPublishedDate(book.getPublishedDate());
+		savedBook.setActive(book.getActive());
 		books.add(savedBook);
 		return savedBook;
 	}

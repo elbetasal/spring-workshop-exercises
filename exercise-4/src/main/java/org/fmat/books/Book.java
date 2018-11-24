@@ -4,6 +4,8 @@ import lombok.Data;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
+import java.util.Date;
+
 @Data
 public class Book {
 
@@ -19,6 +21,11 @@ public class Book {
 
 	@Email
 	private String authorEmail;
+
+	private Date publishedDate;
+
+	private Boolean active = true;
+
 
 	public Book() {
 	}

@@ -9,17 +9,20 @@
 <form action="#" th:action="@{addNewBook}" th:object="${book}" method="post">
     <table>
         <tr>
-            <td><label th:text="NameE" /></td>
+            <td><label th:text="#{books.view.label.name}" /></td>
             <td>
                 <input type="text" th:field="*{name}">
             </td>
+            <!--<td>-->
+                <!--<p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Error Name</p>-->
+            <!--</td>-->
         </tr>
         <tr>
             <td>ISBN</td>
             <td><input type="text" th:field="*{isbn}"></td>
         </tr>
         <tr>
-            <td>Phone</td>
+            <td><label th:text="#{books.view.label.phone}" /></td>
             <td>
                 <input type="text" th:field="*{phone}">
             </td>
@@ -31,9 +34,39 @@
             </td>
         </tr>
         <tr>
+            <td>
+                <label th:text="#{books.view.label.publishedDate}"/>
+            </td>
+            <td>
+                <input type="text" th:field="*{publishedDate}"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label th:text="#{books.view.label.enabled}"/>
+            </td>
+            <td>
+                <input type="checkbox" th:field="*{active}" />
+            </td>
+        </tr>
+        <tr>
             <td><input type="submit" value="Submit" /></td>
         </tr>
     </table>
+    <div>
+        <p th:text="${#locale}">[...]</p>
+        <p th:text="#{date.format}">[...]</p>
+        <p th:text="${session.hello}" th:unless="${session == null}">[...]</p>
+        <p th:text="${@booksController.getHello()}" th:unless="${session == null}">[...]</p>
+    </div>
+    <ul>
+        <li th:each="err : ${#fields.errors('name')}" th:text="${err}" />
+        <li th:each="err : ${#fields.errors('phone')}" th:text="${err}" />
+    </ul>
+    <ul>
+        <li th:each="err : ${#fields.errors('all')}" th:text="${err}" />
+    </ul>
+
 </form>
 
 </body>

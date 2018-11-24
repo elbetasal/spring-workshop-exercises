@@ -5,11 +5,11 @@
     <title>Title</title>
 </head>
 <body>
-<table th:unless="${#lists.isEmpty(books)}">
+<table>
     <thead>
     <tr>
         <td>
-            Name
+            <label th:text="#{books.view.label.name}" />
         </td>
         <td>
             Id
@@ -17,10 +17,19 @@
         <td>
             ISBN
         </td>
+        <td>
+            <label th:text="#{books.view.label.phone}" />
+        </td>
+        <td>
+           <label th:text="#{books.view.label.publishedDate}" />
+        </td>
+        <td>
+            <label th:text="#{books.view.label.enabled}" />
+        </td>
 
     </tr>
     </thead>
-    <tbody>
+    <tbody th:unless="${#lists.isEmpty(books)}">
     <tr th:each="book : ${books}">
         <td th:text="${book.name}">
 
@@ -31,8 +40,23 @@
         <td th:text="${book.isbn}">
 
         </td>
+        <td th:text="${book.phone}">
 
+        </td>
+        <td th:text="${{book.publishedDate}}">
+
+        </td>
+        <td th:text="#{|bool.${book.active}}">
+
+        </td>
     </tr>
+    </tbody>
+    <tbody th:if="${#lists.isEmpty(books)}">
+        <tr>
+           <td colspan="3">
+               No hay libros
+           </td>
+        </tr>
     </tbody>
 </table>
 </body>

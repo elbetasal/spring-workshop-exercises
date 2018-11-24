@@ -5,6 +5,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Description;
+import org.springframework.context.support.ResourceBundleMessageSource;
+import org.springframework.format.FormatterRegistry;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -65,5 +67,21 @@ public class WebConfig implements WebMvcConfigurer {
 		return templateResolver;
 	}
 
+	@Override
+	public void addFormatters(FormatterRegistry registry) {
+		registry.addFormatter(dateFormatter());
+	}
 
+	@Bean
+	public DateFormatter dateFormatter() {
+		return new DateFormatter(messageSource());
+	}
+
+	@Bean
+	@Description("Spring Message Resolver")
+	public ResourceBundleMessageSource messageSource() {
+		ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
+		messageSource.setBasename("messages");
+		return messageSource;
+	}
 }
