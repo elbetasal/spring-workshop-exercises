@@ -89,7 +89,6 @@ public class StudentRepositoryImplTest {
 
 		return JdbcTestUtils.countRowsInTableWhere(jdbcTemplate , "student" ,
 				"id="+student.getId());
-
 	}
 
 	private void assertStudent(Student student, Student updatedStudent) {

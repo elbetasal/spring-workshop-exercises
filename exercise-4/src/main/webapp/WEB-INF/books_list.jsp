@@ -4,12 +4,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link href="<c:url value="/css/main.css" />" rel="stylesheet">
     <title>Books Store</title>
 </head>
 <body>
 <h1>
     Available Books
 </h1>
+<h2>
+    ${welcomeMessage}
+</h2>
 <table>
     <thead >
         <tr>

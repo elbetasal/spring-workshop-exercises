@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.time.LocalDate;
 import java.util.*;
 
 @Controller
@@ -19,7 +21,7 @@ public class BooksController {
 	}
 
 	@GetMapping("/")
-	public String defaultPage() {
+	public String defaultPage(Model model) {
 		return "createBook";
 	}
 
@@ -58,6 +60,7 @@ public class BooksController {
 		Book book = new Book(UUID.randomUUID().toString(),
 				"Name","ISBN");
 		model.addAttribute("book" , book);
+		model.addAttribute("welcomeMessage", "Welcome at " + LocalDate.now());
 
 	}
 }

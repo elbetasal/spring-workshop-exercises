@@ -7,6 +7,7 @@
 </head>
 <body>
 
+<h1>${welcomeMessage}</h1>
 <form:form method="post" action="addNewBook" modelAttribute="book">
     <table>
         <tr>
