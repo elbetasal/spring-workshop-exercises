@@ -28,6 +28,7 @@ public class BookRepository {
 		Book savedBook = new Book(UUID.randomUUID().toString(),
 				book.getName() , book.getIsbn());
 		savedBook.setPhone(book.getPhone());
+		savedBook.setAuthorEmail(book.getAuthorEmail());
 		books.add(savedBook);
 		return savedBook;
 	}

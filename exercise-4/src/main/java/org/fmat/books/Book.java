@@ -1,7 +1,10 @@
 package org.fmat.books;
 
+import lombok.Data;
+import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
+@Data
 public class Book {
 
 	private String id;
@@ -14,6 +17,9 @@ public class Book {
 	@PhoneNumberConstraint
 	private String phone;
 
+	@Email
+	private String authorEmail;
+
 	public Book() {
 	}
 
@@ -21,38 +27,6 @@ public class Book {
 		this.id = id;
 		this.name = name;
 		this.isbn = isbn;
-	}
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getIsbn() {
-		return isbn;
-	}
-
-	public void setIsbn(String isbn) {
-		this.isbn = isbn;
-	}
-
-	public String getPhone() {
-		return phone;
-	}
-
-	public void setPhone(String phone) {
-		this.phone = phone;
 	}
 
 	@Override

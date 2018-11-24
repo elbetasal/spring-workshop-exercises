@@ -29,6 +29,9 @@
             <td>
                 Phone
             </td>
+            <td>
+                Email
+            </td>
         </tr>
     </thead>
     <tbody>
@@ -45,6 +48,9 @@
             </td>
             <td>
                 ${book.phone}
+            </td>
+            <td>
+                ${book.authorEmail}
             </td>
         </tr>
 

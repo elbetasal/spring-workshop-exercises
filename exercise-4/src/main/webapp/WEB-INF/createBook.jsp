@@ -30,6 +30,13 @@
             </td>
         </tr>
         <tr>
+            <td>Email</td>
+            <td>
+                <form:input path="authorEmail" />
+                <form:errors path="authorEmail" />
+            </td>
+        </tr>
+        <tr>
             <td><input type="submit" value="Submit" /></td>
         </tr>
     </table>
