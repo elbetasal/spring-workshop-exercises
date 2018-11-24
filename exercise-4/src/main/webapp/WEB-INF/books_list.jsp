@@ -26,6 +26,9 @@
             <td>
                 ISBN
             </td>
+            <td>
+                Phone
+            </td>
         </tr>
     </thead>
     <tbody>
@@ -39,6 +42,9 @@
             </td>
             <td>
                 ${book.isbn}
+            </td>
+            <td>
+                ${book.phone}
             </td>
         </tr>
 

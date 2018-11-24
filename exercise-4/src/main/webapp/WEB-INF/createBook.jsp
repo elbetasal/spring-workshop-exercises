@@ -7,16 +7,27 @@
 </head>
 <body>
 
-<h1>${welcomeMessage}</h1>
 <form:form method="post" action="addNewBook" modelAttribute="book">
     <table>
         <tr>
             <td>Name</td>
-            <td><form:input path="name" /></td>
+            <td>
+                <form:input path="name" />
+                <form:errors path="name" cssClass="error"/>
+            </td>
         </tr>
         <tr>
             <td>ISBN</td>
-            <td><form:input path="isbn" /></td>
+            <td>
+                <form:input path="isbn" />
+            </td>
+        </tr>
+        <tr>
+            <td>Phone</td>
+            <td>
+                <form:input path="phone" />
+                <form:errors path="phone" />
+            </td>
         </tr>
         <tr>
             <td><input type="submit" value="Submit" /></td>

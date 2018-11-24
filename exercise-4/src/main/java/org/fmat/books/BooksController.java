@@ -3,9 +3,11 @@ package org.fmat.books;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
 import java.time.LocalDate;
 import java.util.*;
 
@@ -50,17 +52,21 @@ public class BooksController {
 	}
 
 	@PostMapping("/addNewBook")
-	public String addBook(@ModelAttribute Book book ){
-		bookRepository.saveBook(book);
-		return "redirect:show";
+	public String addBook(@Valid Book book ,
+	                      BindingResult bindingResult){
+		if(bindingResult.hasErrors()){
+			return "createBook";
+		} else{
+			bookRepository.saveBook(book);
+			return "redirect:show";
+		}
+
 	}
 
 	@ModelAttribute
 	public void addAt(Model model) {
-		Book book = new Book(UUID.randomUUID().toString(),
-				"Name","ISBN");
+		Book book = new Book();
 		model.addAttribute("book" , book);
-		model.addAttribute("welcomeMessage", "Welcome at " + LocalDate.now());
 
 	}
 }
