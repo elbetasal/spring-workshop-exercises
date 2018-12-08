@@ -58,7 +58,7 @@
                     <li th:each="type : ${types}">
                         <input type="checkbox" th:field="*{bookType}" th:value="${type}" />
                         <label th:for="${#ids.next('types')}"
-                               th:text="${type}">Heating</label>
+                               th:text="${type}">Types</label>
                     </li>
                 </ul>
             </td>
@@ -68,9 +68,9 @@
         </tr>
     </table>
     <div>
+        <label>Leyendo la variable locale</label>
         <p th:text="${#locale}">[...]</p>
-        <p th:text="#{date.format}">[...]</p>
-        <p th:text="${session.hello}" th:unless="${session == null}">[...]</p>
+        <label>Invocando un método dentro de un bean</label>
         <p th:text="${@booksController.getHello()}" th:unless="${session == null}">[...]</p>
     </div>
     <ul>

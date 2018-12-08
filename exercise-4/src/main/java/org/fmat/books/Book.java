@@ -17,7 +17,6 @@ public class Book {
 
 	private String isbn;
 
-	@PhoneNumberConstraint
 	private String phone;
 
 	@Email
