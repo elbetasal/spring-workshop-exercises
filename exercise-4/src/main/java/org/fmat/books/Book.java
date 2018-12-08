@@ -5,6 +5,7 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import java.util.Date;
+import java.util.List;
 
 @Data
 public class Book {
@@ -26,6 +27,7 @@ public class Book {
 
 	private Boolean active = true;
 
+	private List<BookType> bookType;
 
 	public Book() {
 	}

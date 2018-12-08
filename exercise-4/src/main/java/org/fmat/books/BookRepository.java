@@ -31,6 +31,7 @@ public class BookRepository {
 		savedBook.setAuthorEmail(book.getAuthorEmail());
 		savedBook.setPublishedDate(book.getPublishedDate());
 		savedBook.setActive(book.getActive());
+		savedBook.setBookType(book.getBookType());
 		books.add(savedBook);
 		return savedBook;
 	}

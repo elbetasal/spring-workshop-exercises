@@ -26,7 +26,6 @@
         <td>
             <label th:text="#{books.view.label.enabled}" />
         </td>
-
     </tr>
     </thead>
     <tbody th:unless="${#lists.isEmpty(books)}">
@@ -49,6 +48,7 @@
         <td th:text="#{|bool.${book.active}}">
 
         </td>
+
     </tr>
     </tbody>
     <tbody th:if="${#lists.isEmpty(books)}">

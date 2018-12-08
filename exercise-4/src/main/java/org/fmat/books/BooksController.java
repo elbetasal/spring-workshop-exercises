@@ -12,6 +12,8 @@ import javax.validation.Valid;
 import java.time.LocalDate;
 import java.util.*;
 
+import static java.util.Arrays.*;
+
 @Controller
 @ControllerAdvice
 @RequestMapping("/books-store")
@@ -70,6 +72,11 @@ public class BooksController {
 		Book book = new Book();
 		model.addAttribute("book" , book);
 
+	}
+
+	@ModelAttribute("types")
+	public List<BookType> types() {
+		return asList(BookType.values());
 	}
 
 

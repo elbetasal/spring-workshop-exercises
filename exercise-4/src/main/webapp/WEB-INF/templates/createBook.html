@@ -50,6 +50,20 @@
             </td>
         </tr>
         <tr>
+            <td>
+                <label th:text="#{books.view.label.types}"/>
+            </td>
+            <td>
+                <ul>
+                    <li th:each="type : ${types}">
+                        <input type="checkbox" th:field="*{bookType}" th:value="${type}" />
+                        <label th:for="${#ids.next('types')}"
+                               th:text="${type}">Heating</label>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
             <td><input type="submit" value="Submit" /></td>
         </tr>
     </table>
