@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+
+<html>
+   <head>
+     <meta charset="utf-8" />
+      <script type = "text/javascript">
+	 var ws = new WebSocket("ws://localhost:9090/myHandler");
+	 ws.onopen = function() {
+		console.log("Connected");
+	 }
+         function WebSocketTest() {
+            
+            if ("WebSocket" in window) {
+               // Let us open a web socket
+               //var ws = new WebSocket("ws://localhost:9090/myHandler");
+				
+               ws.onmessage = function (evt) { 
+		  document.getElementById("output").innerHTML += "<p style='color: blue;'>> RESPONSE: " + evt.data + "</p>"; 
+               };
+				
+               ws.onclose = function() { 
+                  
+                  // websocket is closed.
+                  alert("Connection is closed..."); 
+               };
+            } else {
+              
+               // The browser doesn't support WebSocket
+               alert("WebSocket NOT supported by your Browser!");
+            }
+	}
+	function sendMessage(e) {
+		 e.which = e.which || e.keyCode;
+    		if(e.which == 13) {
+        	// submit
+			ws.send(document.getElementById("input").value);
+    		}
+	}
+	window.addEventListener("load" , WebSocketTest, false);
+	
+      </script>
+		
+   </head>
+   
+   <body>
+      <div id = "sse">
+	 <input id="input" type="text" onKeyUp="sendMessage(event)"/>
+         <div id="output"></div>
+      </div>
+      
+   </body>

@@ -14,6 +14,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.handler.SimpleMappingExceptionResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
+import org.springframework.web.socket.config.annotation.EnableWebSocket;
+import org.springframework.web.socket.config.annotation.WebSocketConfigurer;
+import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry;
 import org.thymeleaf.spring4.SpringTemplateEngine;
 import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
@@ -21,9 +24,10 @@ import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 import javax.servlet.ServletContext;
 
 @EnableWebMvc
+@EnableWebSocket
 @Configuration
 @ComponentScan
-public class WebConfig implements WebMvcConfigurer {
+public class WebConfig implements WebMvcConfigurer , WebSocketConfigurer {
 
 	@Autowired
 	private ServletContext ctx;
@@ -83,5 +87,14 @@ public class WebConfig implements WebMvcConfigurer {
 		ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
 		messageSource.setBasename("messages");
 		return messageSource;
+	}
+
+	@Override
+	public void registerWebSocketHandlers(WebSocketHandlerRegistry webSocketHandlerRegistry) {
+		webSocketHandlerRegistry.addHandler(getWebSocketHandler(), "/myHandler").setAllowedOrigins("*");
+	}
+
+	private Handler getWebSocketHandler() {
+		return new Handler();
 	}
 }
