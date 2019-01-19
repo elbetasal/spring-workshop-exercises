@@ -16,6 +16,7 @@
 	<module>exercise-2</module>
         <module>exercise-3</module>
 		<module>exercise-4</module>
+		<module>exercise-5</module>
 	</modules>
 	<dependencyManagement>
 		<dependencies>
@@ -49,6 +50,11 @@
 				<artifactId>spring-test</artifactId>
 				<version>5.1.1.RELEASE</version>
 				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-core</artifactId>
+				<version>5.2.17.Final</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
