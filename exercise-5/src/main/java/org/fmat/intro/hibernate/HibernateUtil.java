@@ -11,7 +11,9 @@ public class HibernateUtil {
 		try {
 			// Create the SessionFactory from hibernate.cfg.xml
 			return new Configuration().configure()
-					.addAnnotatedClass(Student.class)
+					.addAnnotatedClass(Book.class)
+					.addAnnotatedClass(org.fmat.intro.hibernate.mapping.one2one.Student.class)
+					.addAnnotatedClass(org.fmat.intro.hibernate.mapping.one2one.Address.class)
 					.buildSessionFactory();
 		} catch (Throwable ex) {
 			// Make sure you log the exception, as it might be swallowed
