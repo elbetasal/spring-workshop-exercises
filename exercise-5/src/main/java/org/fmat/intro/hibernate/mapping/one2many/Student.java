@@ -3,10 +3,7 @@ package org.fmat.intro.hibernate.mapping.one2many;
 import lombok.*;
 import org.fmat.intro.hibernate.BaseEntity;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +27,7 @@ public class Student extends BaseEntity {
 			cascade = CascadeType.ALL,
 			orphanRemoval = true
 	)
+	@JoinColumn(name = "student_id")
 	@Builder.Default
 	private List<Book> books = new ArrayList<>();
 
