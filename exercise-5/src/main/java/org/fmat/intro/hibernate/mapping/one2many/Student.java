@@ -24,11 +24,20 @@ public class Student extends BaseEntity {
 	private Integer age;
 
 	@OneToMany(
+			mappedBy = "student",
 			cascade = CascadeType.ALL,
 			orphanRemoval = true
 	)
-	@JoinColumn(name = "student_id")
 	@Builder.Default
 	private List<Book> books = new ArrayList<>();
 
+	public void addBook(Book book) {
+		books.add(book);
+		book.setStudent(this);
+	}
+
+	public void removeBook(Book book) {
+		books.remove(book);
+		book.setStudent(null);
+	}
 }
