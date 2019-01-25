@@ -1,9 +1,6 @@
 package org.fmat.intro.hibernate.mapping.one2many;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.fmat.intro.hibernate.BaseEntity;
 
 import javax.persistence.*;
@@ -14,6 +11,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Data
 @Builder
+@ToString(exclude = "student")
 public class Book extends BaseEntity {
 
 	private String name;

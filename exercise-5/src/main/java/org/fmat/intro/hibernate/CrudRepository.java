@@ -81,4 +81,14 @@ public class CrudRepository<T extends BaseEntity> {
 		return resultList;
 
 	}
+
+	public List<Student> findStudentsWithBooksById(int id) {
+		Session session = openSession();
+		Query query = session.createNamedQuery("studentById" );
+		query.setParameter("id", id);
+		List resultList = query.getResultList();
+		session.close();
+		return resultList;
+	}
+
 }

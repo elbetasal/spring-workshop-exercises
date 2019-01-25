@@ -15,6 +15,9 @@ import java.util.List;
 @EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
+@NamedQueries(
+		@NamedQuery(name = "studentById" , query = "from Student s join fetch s.books where s.id=:id")
+)
 public class Student extends BaseEntity {
 
 	@NotNull
