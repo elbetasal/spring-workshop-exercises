@@ -17,7 +17,8 @@
         <module>exercise-3</module>
 		<module>exercise-4</module>
 		<module>exercise-5</module>
-	</modules>
+        <module>spring-security</module>
+    </modules>
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
