@@ -22,7 +22,8 @@ public class WebConfig implements WebMvcConfigurer {
 		registry.addViewController("/user/hello.html");
 		registry.addViewController("/accessDenied.html");
 		registry.addViewController("/login.html");
-		registry.addViewController("/homepage.html");
+
+		registry.addViewController("/home.html");
 	}
 
 	@Bean

@@ -43,9 +43,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.anyRequest().authenticated()
 				.and()
 				.formLogin()
+				.loginPage("/login.html")
+				.loginProcessingUrl("/perform_login")
+				.defaultSuccessUrl("/home.html")
 				.and()
 				.logout()
-//				.logoutUrl("/perform_logout")
+				.logoutUrl("/perform_logout")
 				.deleteCookies("JSESSIONID")
 				.and()
 				.exceptionHandling().accessDeniedPage("/accessDenied.html");
