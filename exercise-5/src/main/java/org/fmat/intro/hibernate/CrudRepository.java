@@ -91,4 +91,12 @@ public class CrudRepository<T extends BaseEntity> {
 		return resultList;
 	}
 
+
+	public List findAddressWithStudend(int id) {
+		Session session = openSession();
+		List addresses = session.createQuery("select a from Address a inner join fetch a.student").getResultList();
+		session.close();
+		return addresses;
+	}
+
 }
