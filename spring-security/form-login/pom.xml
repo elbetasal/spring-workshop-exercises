@@ -68,6 +68,10 @@
             <artifactId>spring-security-taglibs</artifactId>
             <version>5.1.1.RELEASE</version>
         </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

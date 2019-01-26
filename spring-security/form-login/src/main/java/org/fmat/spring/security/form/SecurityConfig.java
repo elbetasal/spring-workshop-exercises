@@ -1,5 +1,6 @@
 package org.fmat.spring.security.form;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -10,26 +11,20 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.access.AccessDeniedHandler;
 
+import javax.sql.DataSource;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+	@Autowired
+	private DataSource dataSource;
+
 	@Override
 	protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
-		auth.inMemoryAuthentication()
-				.withUser("user1")
-				.password(passwordEncoder().encode("user1Pass"))
-				.roles("USER")
-
-				.and()
-				.withUser("user2")
-				.password(passwordEncoder().encode("user2Pass"))
-				.roles("USER")
-
-				.and()
-				.withUser("admin")
-				.password(passwordEncoder().encode("adminPass"))
-				.roles("ADMIN");
+		auth.jdbcAuthentication().dataSource(dataSource)
+				.usersByUsernameQuery("select username,password, enabled from users where username=?")
+				.authoritiesByUsernameQuery("select username, role from user_roles where username=?");
 	}
 
 	@Override
@@ -44,6 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.anyRequest().authenticated()
 				.and()
 				.formLogin()
+				.usernameParameter("username").passwordParameter("password")
 				.loginPage("/login.html")
 				.loginProcessingUrl("/perform_login")
 				.defaultSuccessUrl("/home.html")
